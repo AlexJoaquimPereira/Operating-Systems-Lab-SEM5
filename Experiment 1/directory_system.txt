@@ -1,0 +1,28 @@
+Script started on Thursday 04 July 2024 11:35:26 AM IST
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1gec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1$ mkdir GEC
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1gec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1$ cd GEC
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GECgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC$ mkdir xomp [K[K[K[K[KC[Kcomp && mkdir IT && mkdir mech && mkdir civil
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GECgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC$ cd mech
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/mechgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/mech$ mkdir SE && mkdir TE && mkdir BE
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/mechgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/mech$ cd ..
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GECgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC$ cd comp
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/compgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp$ mkdir SE && mkdir TE && mkdir BE
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/compgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp$ cd Se[KE[K[K[K TE
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TEgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE$ mkdir OS && mkdir DM[KBMS && mkdir WT
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TEgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE$ cd OSD[K
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OSgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS$ m,[Kkdir lab && mksi[K[Kdir assignment
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OSgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS$ cd lab [K
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS/labgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS/lab$ cat > practical.txt && cat > teer[K[Krmwork.txt
+
+>
+>>
+
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS/labgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS/lab$ cd ..
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OSgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS$ cat >>[K[K[K[K[K[Kcd E[Kassignment
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS/assignmentgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS/assignment$ cat > e[K1.txt && cat > 2.tz[Kxt &^[K& cat > 3/[K.txt && cat 4.tx t && cat > 5.txt
+>>
+\ 
+cat: 4.txt: No such file or directory
+]0;gec@gec-HP-ProDesk-400-G3-SFF: ~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS/assignmentgec@gec-HP-ProDesk-400-G3-SFF:~/Desktop/22B-CO-006/Experiment 1/GEC/comp/TE/OS/assignment$ exit
+
+Script done on Thursday 04 July 2024 11:41:13 AM IST
