@@ -2,6 +2,8 @@
 
 smallest=10
 largest=0
+second_largest=0
+second_smallest=10
 
 echo "Enter a number:"
 read num
@@ -11,14 +13,22 @@ do
 	x=$(($num % 10))
 	if [ $x -gt $largest ];
 	then
-		largest=$x
-	fi
-	if [ $x -lt $smallest ];
+    	second_largest=$largest
+    	largest=$x
+  	elif [ $x -gt $second_largest ];
 	then
-		smallest=$x
-	fi
-	num=$(($num / 10))
+    	second_largest=$x
+  	fi
+  	if [ $x -lt $smallest ];
+	then
+    	second_smallest=$smallest
+    	smallest=$x
+  	elif [ $x -lt $second_smallest ];
+	then
+    	second_smallest=$x
+  	fi
+  	num=$(($num / 10))
 done
 
-echo "Largest digit is $largest"
-echo "Smallest digit is $smallest"
+echo "Second largest digit is $second_largest"
+echo "Second smallest digit is $second_smallest"
