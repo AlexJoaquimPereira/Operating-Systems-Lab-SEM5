@@ -1,7 +1,4 @@
 #include<iostream>
-#include<algorithm>
-#include<queue>
-#include<ctime>
 #include<iomanip>
 using namespace std;
 
@@ -15,8 +12,8 @@ typedef struct {
 }process;
 
 // sorts the processes acc. to arrival time
-bool cmp (const process p1, const process p2){
-	return (p1.at < p2.at);
+bool cmp(const process p1, const process p2){
+    return (p1.at < p2.at);
 }
 
 // sorts the processes acc. to ID
@@ -24,8 +21,24 @@ bool cmp_id(const process p1, const process p2){
     return (p1.id < p2.id);
 }
 
+// Main sorting function (uses Insertion Sort as base)
+// Function signature: sort(<array>, <array size>, <function to sort>)
+void sort(process arr[], int n, bool (*compare)(const process, const process)){
+    int i, j;
+    process key;
+    for (i = 1; i < n; i++){
+        key = arr[i];
+        j = i - 1;
+        while (j >= 0 && compare (arr[j], key)) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
 void FCFS(process *pro){
-    int awt = 0, atat = 0;
+    float awt = 0, atat = 0;
     int ctime = 0; // clock ticks
     for (int i = 0; i < n; i++){
         if (pro[i].at > ctime)
@@ -44,7 +57,7 @@ void FCFS(process *pro){
     
     avgTurnaroundTime = atat / n;
     avgWaitingTime = awt / n;
-    sort(pro, pro + n, cmp_id);
+    sort(pro, n, cmp_id);
 }
 
 void printFCFS(process *pro){
@@ -55,7 +68,7 @@ void printFCFS(process *pro){
     cout << "Avg waiting time: " << std::setprecision(4) << avgWaitingTime << endl
          << "Avg tat: " << std::setprecision(4) << avgTurnaroundTime << endl;
 
-    sort(pro, pro + n, cmp);
+    sort(pro, n, cmp);
 
     for (int i = 0; i < n; i++){
         cout << "|";
@@ -81,18 +94,22 @@ void printFCFS(process *pro){
     cout << endl;
 }
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]){
+    bool (*compare)(const process, const process); // pointer to comparison function
     cout << "Enter number of processes: ";
 	cin >> n;
 	process *processor = new process [n];
-	cout << "Enter the processes (AT, BT):\n";
+	cout << "Enter the arrival times:\n";
 	for(int i = 0; i < n ; i++){
 		processor[i].id = i + 1;
-		cin >> processor[i].at >> processor[i].bt;
+		cin >> processor[i].at;
 		processor[i].arrived = false;
 	}
-	sort(processor, processor + n, cmp);
+    cout << "Enter the burst times:\n";
+    for(int i = 0; i < n ; i++){
+		cin >> processor[i].bt;
+	}
+	sort(processor, n, cmp);
 	FCFS(processor);
 	printFCFS(processor);
 	delete processor;
