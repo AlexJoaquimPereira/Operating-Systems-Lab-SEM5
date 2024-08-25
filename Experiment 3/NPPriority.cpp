@@ -1,17 +1,18 @@
 #include<iostream>
 #include<iomanip>
-#define pending true
-#define finished false
+#define not_arrived 0
+#define arrived 1
+#define completed 2
 using namespace std;
 
 int n; // Number of processes
+int currentTime = 0, remainingTime = 0, globalOrder = 1;
 float avgTurnaroundTime;
 float avgWaitingTime;
 
 typedef struct {
-	int id, at, bt, pri, tat, wt, ct;
-	bool status;
-    bool arrived; // if process has arrived
+	int id, at, bt, pri, tat, wt, ct, order;
+    int flag; // if process has arrived
 }process;
 
 // sorts the processes acc. to arrival time
@@ -28,6 +29,11 @@ bool cmp_pri (const process p1, const process p2){
 // sorts the processes acc. to ID
 bool cmp_id(const process p1, const process p2){
     return (p1.id < p2.id);
+}
+
+// sorts the processes acc. to order of execution
+bool cmp_order(const process p1, const process p2){
+    return p1.order < p2.order;
 }
 
 // or I got this idea
@@ -47,6 +53,7 @@ void swap (process p1, process p2){
     p2 = temp;
 }
 
+// if this program is done then we need to just use FCFS fun. and don't even sort it back
 void prisort(process arr[], int n){
     int i, j;
     process key;
@@ -86,55 +93,44 @@ int maxPri(process p[]){
     return min;
 }
 
-void NPP1(process *pro){
+void NPP(process *pro){
     float awt = 0, atat = 0;
     int ctime = 0;
     int remctime = pro[0].at;
     for(int i = 0; i < n; i++) remctime += pro[i].bt;
-    while(true){
-        
-        // all processes have ended
-        int if_finished = 0;
-        for (int i = 0; i < n; i++)
-            if (pro[i].status == pending)
-                if_finished = 1;
-        if (!if_finished)
-            break;
+    while (remainingTime){
+        for (int i = 0; i < n; i++){
+            if (pro[i].flag == not_arrived && pro[i].at <= currentTime)
+                pro[i].flag = arrived;
+        }
+        int index = -1, highest_priority = __INT_MAX__;
+        for (int i = 0; i < n; i++){
+            if (pro[i].flag == arrived && (pro[i].pri < highest_priority))
+                highest_priority = pro[i].pri, index = i;
+        }
+        if (index == -1){
+            currentTime++;
+            continue;
+        }
+        pro[index].order = globalOrder++;
+        pro[index].flag = completed;
+        remainingTime -= pro[index].bt;
+        currentTime += pro[index].bt;
     }
-
-    for (int i = 0; i < n; i++)
-        pro[i].wt = pro[i].tat - pro[i].bt;
-
-    for (int i = 0; i < n; i++)
-        atat += pro[i].tat, awt += pro[i].wt;
-
-    avgTurnaroundTime = atat / n;
-    avgWaitingTime = awt / n;
-    sort(pro, n, cmp_id);
-}
-
-void NPP(process *pro){
-    float awt = 0, atat = 0;
-    int ctime = 0;
+    sort(pro, n, cmp_order);
     for (int i = 0; i < n; i++){
-        
-        if (pro[i].at > ctime)
-            ctime = pro[i].at + pro[i].bt;
-        else ctime += pro[i].bt;
-
-        pro[i].ct = ctime;
-        pro[i].tat = pro[i].ct - pro[i].at;
-    }
-
-    for (int i = 0; i < n; i++)
+        int ct = 0;
+        ct += pro[i].at;
+        for (int j = 0; j < i; j++)
+            ct += pro[j].bt;
+        ct += pro[i].bt;
+        pro[i].tat = ct - pro[i].at;
         pro[i].wt = pro[i].tat - pro[i].bt;
-
-    for (int i = 0; i < n; i++)
-        atat += pro[i].tat, awt += pro[i].wt;
-
+        atat += pro[i].tat;
+        awt += pro[i].wt;
+    }
     avgTurnaroundTime = atat / n;
     avgWaitingTime = awt / n;
-    sort(pro, n, cmp_id);
 }
 
 void printNPP(process *pro){
@@ -185,8 +181,9 @@ int main(int argc, char const *argv[])
 	for(int i = 0; i < n ; i++){
 		processor[i].id = i + 1;
 		cin >> processor[i].at >> processor[i].bt >> processor[i].pri;
-		processor[i].status = pending;
-        processor[i].arrived = false;
+        processor[i].wt = processor[i].tat = processor[i].order = -1;
+        processor[i].flag = not_arrived;
+        remainingTime += processor[i].bt;
 	}
 	sort(processor, n, cmp);
 	NPP(processor);
