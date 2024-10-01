@@ -133,6 +133,10 @@ int main(){
 
 	int Request[m]; // Request vector
 
+	cout << "Enter Available resources:\n";
+    for (int j = 0; j < m; j++) 
+        cin >> Available[j];
+
 	cout << "Enter Max matrix: \n";
 	for(int i = 0; i < n; i++)
 		for(int j = 0; j < m; j++)
