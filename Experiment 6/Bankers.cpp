@@ -22,9 +22,8 @@ bool safety(){
 	int i;
 	int safeSeq[n + 1]; // Safe sequence
 	int count = 0;
-	bool found;
+	bool found = false;
     while (count < n){
-        bool found = false;
         for (int i = 0; i < n; i++){
             if (!Finish[i]){
                 int j;
@@ -69,11 +68,11 @@ bool step_2(int Request[], int i){
 // Request[] - request vector
 // i - the process for which request
 void Bankers(int Request[], int i){
-	if(step_1(Request, i)){ 
+	if(!step_1(Request, i)){ 
 		cout << "Process has exceeded claim\n";
 		return;
 	}
-	else if(step_2(Request, i)){ 
+	else if(!step_2(Request, i)){ 
 		cout << "P" << i << " must wait till resources are available\n";
 		return;
 	}
@@ -97,6 +96,35 @@ void Bankers(int Request[], int i){
 	}
 }
 
+void displaySystem() {
+    cout << "Max Matrix:\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << Max[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "\nAllocation Matrix:\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << Allocation[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "\nNeed Matrix:\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << Need[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "\nAvailable Resources:\n";
+    for (int j = 0; j < m; j++) {
+        cout << Available[j] << " ";
+    }
+    cout << endl;
+}
+
 int main(){
 	cout << "Enter number of processes: ";
 	cin >> n;
@@ -108,16 +136,16 @@ int main(){
 	cout << "Enter Max matrix: \n";
 	for(int i = 0; i < n; i++)
 		for(int j = 0; j < m; j++)
-			cin >> Max[n][m];
+			cin >> Max[i][j];
 	
 	cout << "Enter Allocation matrix: \n";
 	for(int i = 0; i < n; i++)
 		for(int j = 0; j < m; j++)
-			cin >> Allocation[n][m];
+			cin >> Allocation[i][j];
 
 	for(int i = 0; i < n; i++)
 		for(int j = 0; j < m; j++)
-			Need[n][m] = Max[n][m] - Allocation[n][m];
+			Need[i][j] = Max[i][i] - Allocation[i][j];
 
 	int choice = 3;
 	do{
@@ -134,8 +162,10 @@ int main(){
 				for(int j = 0; j < m; j++)
 					cin >> Request[j];
 				Bankers(Request, i);
+				displaySystem();
 				break;
-			case 2:
+			case 2: displaySystem();
+				break;
 			default: cout << "Invalid option\n";
 		}
 	}while(choice != 3);
